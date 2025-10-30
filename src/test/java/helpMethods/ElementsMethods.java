@@ -22,12 +22,10 @@ public class ElementsMethods {
     }
 
     public void fillElement(WebElement element, String text){
-        waitVisibleElement(element);
         element.sendKeys(text);
     }
 
     public void waitVisibleElement (WebElement element) {
-        waitVisibleElement(element);
         WebDriverWait waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(40));
         waitExplicit.until(ExpectedConditions.visibilityOf(element));
     }

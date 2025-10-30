@@ -1,5 +1,7 @@
 package tests;
 
+import helpMethods.ElementsMethods;
+import helpMethods.FramesMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,33 +11,28 @@ import org.testng.annotations.Test;
 
 public class Frames {
     public WebDriver driver;
+    ElementsMethods elementsMethods;
+    FramesMethods framesMethods;
 
     @Test
     public void metodaTest() {
-        //deschidem un browser
         driver = new ChromeDriver();
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-
-        //accesam un URL
-
         driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
 
+        elementsMethods = new ElementsMethods(driver);
+        framesMethods = new FramesMethods(driver);
+
         WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        js.executeScript("arguments[0].click();", alertMeniu);
+        elementsMethods.clickJsElement(alertMeniu);
 
         WebElement framesButton = driver.findElement(By.xpath("//span[text()='Frames']"));
-        js.executeScript("arguments[0].click();", framesButton);
+        elementsMethods.clickJsElement(framesButton);
 
-        driver.switchTo().frame("frame1");
-        WebElement sampleTextElement = driver.findElement(By.id("sampleHeading"));
-        System.out.println(sampleTextElement.getText());
-        driver.switchTo().parentFrame();
+        framesMethods.switchToSpecificFrame("frame1");
 
-        driver.switchTo().frame("frame2");
-        WebElement frameTwoElement = driver.findElement(By.id("sampleHeading"));
-        System.out.println(frameTwoElement.getText());
+        framesMethods.switchToParent();
+
+        framesMethods.switchToSpecificFrame("frame2");
     }
 }

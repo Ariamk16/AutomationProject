@@ -1,6 +1,7 @@
 package tests;
 
 import helpMethods.ElementsMethods;
+import helpMethods.TabMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ public class TabWindowTest {
     public WebDriver driver;
 
     ElementsMethods elementsMethods;
+    TabMethods tabMethods;
 
     @Test
     public void metodaTest() {
@@ -32,6 +34,7 @@ public class TabWindowTest {
         driver.manage().window().maximize();
 
         elementsMethods = new ElementsMethods(driver);
+        tabMethods = new TabMethods(driver);
 
 //        WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
 //        js.executeScript("arguments[0].click();", alertMeniu);
@@ -50,19 +53,23 @@ public class TabWindowTest {
 
         System.out.println("URL-ul paginii curente este: " + driver.getCurrentUrl());
 
-        List <String> tabsList = new ArrayList<>(driver.getWindowHandles()); //returneaza toate taburile pana cand testul ajunge la linia asta
+//        List <String> tabsList = new ArrayList<>(driver.getWindowHandles()); //returneaza toate taburile pana cand testul ajunge la linia asta
+//
+//        driver.switchTo().window(tabsList.get(1));
 
-        driver.switchTo().window(tabsList.get(1));
+        tabMethods.switchSpecificTab(1);
 
-        System.out.println("URL-ul paginii curente este: " + driver.getCurrentUrl());
+//        System.out.println("URL-ul paginii curente este: " + driver.getCurrentUrl());
 
-        driver.close();
-        driver.switchTo().window(tabsList.get(0));
+//        driver.close();
+        tabMethods.closeCurrentTab();
+
+        tabMethods.switchSpecificTab(0);
 
         WebElement newWindow = driver.findElement(By.id("windowButton"));
-        js.executeScript("arguments[0].click();", newWindow);
-        List <String> newWindowList = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(newWindowList.get(1));
+        elementsMethods.clickJsElement(newWindow);
+
+        tabMethods.switchSpecificTab(1);
 
         driver.quit();
     }

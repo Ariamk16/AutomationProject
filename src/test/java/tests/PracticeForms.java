@@ -93,7 +93,7 @@ public class PracticeForms {
 
 
         WebElement stateField = driver.findElement(By.xpath("//div[text()='Select State']"));
-        js.executeScript("arguments[0].click();", stateField);
+        elementsMethods.clickJsElement(stateField);
 
         WebElement stateElementInput = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "NCR";
@@ -106,14 +106,10 @@ public class PracticeForms {
         elementsMethods.clickJsElement(dateOfBirthInput);
 
         WebElement monthElement = driver.findElement(By.className("react-datepicker__month-select"));
-        Select selectMonth = new Select(monthElement);
-        String monthValue = "August";
-        selectMonth.selectByVisibleText(monthValue);
+        elementsMethods.selectDropDownElement(monthElement, "August");
 
         WebElement yearDropdown = driver.findElement(By.className("react-datepicker__year-select"));
-        Select selectYear = new Select(yearDropdown);
-        String yearValue = "1994";
-        selectYear.selectByVisibleText(yearValue);
+        elementsMethods.selectDropDownElement(yearDropdown, "1994");
 
         String dayValue = "16";
         List<WebElement> daysList = driver.findElements(By.xpath("//div[contains(@class,'react-datepicker__day--0') and not(contains(@class,'outside-month'))]"));

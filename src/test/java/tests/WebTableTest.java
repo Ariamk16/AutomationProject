@@ -1,5 +1,6 @@
 package tests;
 
+import helpMethods.ElementsMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ import java.util.List;
 public class WebTableTest {
 
     public WebDriver driver;
+    ElementsMethods elementsMethods;
 
     @Test
     public void metodaTest () {
@@ -27,11 +29,13 @@ public class WebTableTest {
         driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
 
+        elementsMethods = new ElementsMethods(driver);
+
         WebElement elementButtonMenu = driver.findElement(By.xpath("//h5[text()='Elements']"));
-        js.executeScript("arguments[0].click();", elementButtonMenu);
+        elementsMethods.clickJsElement(elementButtonMenu);
 
         WebElement webTablesbutton = driver.findElement(By.xpath("//span[text()='Web Tables']"));
-        js.executeScript("arguments[0].click();", webTablesbutton);
+        elementsMethods.clickJsElement(webTablesbutton);
 
 
         //CTRL + F pt deschidere search consola si pt xpath relative //h5[text()='Elements']
@@ -44,34 +48,34 @@ public class WebTableTest {
 
         //declaram un element
         WebElement addElement = driver.findElement(By.id("addNewRecordButton"));
-        js.executeScript("arguments[0].click();", addElement);
+        elementsMethods.clickJsElement(addElement);
 
         WebElement FirstNameElement = driver.findElement(By.id("firstName"));
         String firstName = "Maria";
-        FirstNameElement.sendKeys(firstName);
+        elementsMethods.fillElement(FirstNameElement, firstName);
 
         WebElement LastNameElement = driver.findElement(By.id("lastName"));
         String lastName = "Aldea";
-        LastNameElement.sendKeys(lastName);
+        elementsMethods.fillElement(LastNameElement, lastName);
 
         WebElement EmailElement = driver.findElement(By.id("userEmail"));
         String email = "maria.aldea08@gmail.com";
-        EmailElement.sendKeys(email);
+        elementsMethods.fillElement(EmailElement, email);
 
         WebElement AgeElement = driver.findElement(By.id("age"));
         String age = "31";
-        AgeElement.sendKeys(age);
+        elementsMethods.fillElement(AgeElement, age);
 
         WebElement SalaryElement = driver.findElement(By.id("salary"));
         String salary = "5000";
-        SalaryElement.sendKeys(salary);
+        elementsMethods.fillElement(SalaryElement, salary);
 
         WebElement DepartmentElement = driver.findElement(By.id("department"));
         String department = "Direct Debit";
-        DepartmentElement.sendKeys(department);
+        elementsMethods.fillElement(DepartmentElement, department);
 
         WebElement submitButtonElement = driver.findElement(By.id("submit"));
-        js.executeScript("arguments[0].click();", submitButtonElement);
+        elementsMethods.clickJsElement(submitButtonElement);
 
         //validam noua dimensiune a tabelului
         List<WebElement> continutTabelNou = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
@@ -92,7 +96,7 @@ public class WebTableTest {
         //edit functionality
 
         WebElement editButtonElement = driver.findElement(By.id("edit-record-4"));
-        js.executeScript("arguments[0].click();", editButtonElement);
+        elementsMethods.clickJsElement(editButtonElement);
 
         WebElement editFirstNameElement = driver.findElement(By.id("firstName"));
         String nume2 = "Richard";
@@ -118,7 +122,7 @@ public class WebTableTest {
         submitButton2Element.click();
 
         WebElement deleteElement = driver.findElement(By.id("delete-record-4"));
-        js.executeScript("arguments[0].click();", deleteElement);
+        elementsMethods.clickJsElement(deleteElement);
 
         List<WebElement> continutTabelNou2 = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
         Assert.assertEquals(continutTabelNou2.size(), 3, "Marimes tabelului nu este 3.");

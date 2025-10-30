@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import pages.HomePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +40,8 @@ public class TabWindowTest {
 //        WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
 //        js.executeScript("arguments[0].click();", alertMeniu);
 
-        WebElement alertMeniu1 = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        elementsMethods.clickJsElement(alertMeniu1);
+        HomePage homePage = new HomePage(driver);
+        homePage.clickAlertFrameWindow();
 
 //        WebElement tabButton = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
 //        js.executeScript("arguments[0].click();", tabButton);

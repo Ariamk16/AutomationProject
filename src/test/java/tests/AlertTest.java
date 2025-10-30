@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AlertsWindows;
+import pages.HomePage;
 
 import java.time.Duration;
 
@@ -20,26 +22,20 @@ public class AlertTest {
 
     @Test
     public void metodaTest() {
-        //deschidem un browser
         driver = new ChromeDriver();
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-
-        //accesam un URL
-
         driver.get("https://demoqa.com/");
-        //wait iplicit vegheaza asupra codului
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         elementsMethods = new ElementsMethods(driver);
         alertsMethods = new AlertsMethods(driver);
 
-        WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        elementsMethods.clickJsElement(alertMeniu);
+        HomePage homePage = new HomePage(driver);
+        homePage.clickAlertFrameWindow();
 
-        WebElement alertsButton = driver.findElement(By.xpath("//span[text()='Alerts']"));
-        elementsMethods.clickJsElement(alertsButton);
+        AlertsWindows alertsWindows = new AlertsWindows(driver);
+        alertsWindows.clickAlert();
 
         WebElement firstAlertButtonElement = driver.findElement(By.id("alertButton"));
         elementsMethods.clickJsElement(firstAlertButtonElement);

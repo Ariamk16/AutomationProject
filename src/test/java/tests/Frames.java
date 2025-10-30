@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import pages.Frames1;
+import pages.HomePage;
 
 public class Frames {
     public WebDriver driver;
@@ -23,11 +25,14 @@ public class Frames {
         elementsMethods = new ElementsMethods(driver);
         framesMethods = new FramesMethods(driver);
 
-        WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        elementsMethods.clickJsElement(alertMeniu);
+        HomePage homePage = new HomePage(driver);
+        homePage.clickAlertFrameWindow();
 
-        WebElement framesButton = driver.findElement(By.xpath("//span[text()='Frames']"));
-        elementsMethods.clickJsElement(framesButton);
+//        WebElement framesButton = driver.findElement(By.xpath("//span[text()='Frames']"));
+//        elementsMethods.clickJsElement(framesButton);
+
+        Frames1 frames = new Frames1(driver);
+        frames.clickFramesButton();
 
         framesMethods.switchToSpecificFrame("frame1");
 

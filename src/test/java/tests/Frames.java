@@ -34,10 +34,6 @@ public class Frames {
         Frames1 frames = new Frames1(driver);
         frames.clickFramesButton();
 
-        framesMethods.switchToSpecificFrame("frame1");
-
-        framesMethods.switchToParent();
-
-        framesMethods.switchToSpecificFrame("frame2");
+        frames.switchFrames("frame1", "frame2");
     }
 }

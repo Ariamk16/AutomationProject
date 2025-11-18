@@ -6,23 +6,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import javax.swing.text.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeForms {
-
-    public WebDriver driver;
+public class PracticeForms extends SharedData {
 
     ElementsMethods elementsMethods;
 
     @Test
     public void metodaTest() {
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
 

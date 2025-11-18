@@ -11,23 +11,18 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AlertsWindows;
 import pages.HomePage;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class AlertTest {
+public class AlertTest extends SharedData {
 
-    public WebDriver driver;
     ElementsMethods elementsMethods;
     AlertsMethods alertsMethods;
 
     @Test
     public void metodaTest() {
-        driver = new ChromeDriver();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
         elementsMethods = new ElementsMethods(driver);
         alertsMethods = new AlertsMethods(driver);
 

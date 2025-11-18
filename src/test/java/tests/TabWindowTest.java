@@ -9,30 +9,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import sharedData.SharedData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class TabWindowTest {
-
-    public WebDriver driver;
+public class TabWindowTest extends SharedData {
 
     ElementsMethods elementsMethods;
     TabMethods tabMethods;
 
     @Test
     public void metodaTest() {
-        //deschidem un browser
-        driver = new ChromeDriver();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-
-        //accesam un URL
-
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
 
         elementsMethods = new ElementsMethods(driver);
         tabMethods = new TabMethods(driver);

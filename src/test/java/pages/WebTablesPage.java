@@ -23,55 +23,55 @@ public class WebTablesPage {
 }
 
 @FindBy(xpath = "//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']")
-public List<WebElement> tableContentList;
+private List<WebElement> tableContentList;
 
     @FindBy(id = "addNewRecordButton")
-    public WebElement addElement;
+    private WebElement addElement;
 
     @FindBy(id = "firstName")
-    public  WebElement FirstNameElement;
+    private  WebElement FirstNameElement;
 
     @FindBy(id = "lastName")
-    public WebElement LastNameElement;
+    private WebElement LastNameElement;
 
     @FindBy(id = "userEmail")
-    public WebElement EmailElement;
+    private WebElement EmailElement;
 
     @FindBy(id = "age")
-    public WebElement AgeElement;
+    private WebElement AgeElement;
 
     @FindBy(id = "salary")
-    public WebElement SalaryElement;
+    private WebElement SalaryElement;
 
     @FindBy(id = "department")
-    public WebElement DepartmentElement;
+    private WebElement DepartmentElement;
 
     @FindBy(id = "submit")
-    public WebElement submitButtonElement;
+    private WebElement submitButtonElement;
 
     @FindBy(xpath = "//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']")
-    public List<WebElement> continutTabelNou;
+    private List<WebElement> continutTabelNou;
 
     @FindBy(id = "age")
-    public WebElement editAge;
+    private WebElement editAge;
 
     @FindBy(id = "\"edit-record-4\"")
-    public WebElement editButtonElement;
+    private WebElement editButtonElement;
 
     @FindBy(id ="\"firstName\"")
-    public WebElement editFirstNameElement;
+    private WebElement editFirstNameElement;
 
     @FindBy(id = "\"lastName\"")
-    public WebElement editLastNameElement;
+    private WebElement editLastNameElement;
 
     @FindBy(id = "userEmail")
-    public WebElement editEmail;
+    private WebElement editEmail;
 
     @FindBy(id = "delete-record-4")
-    public WebElement deleteElement;
+    private WebElement deleteElement;
 
     @FindBy(xpath = "//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']")
-    public WebElement continutTabelNou2;
+    private WebElement continutTabelNou2;
 
     public void createProcess(){
 

@@ -22,28 +22,28 @@ public class TabWindowTest extends SharedData {
 
     @Test
     public void metodaTest() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) (getDriver());
 
 
-        elementsMethods = new ElementsMethods(driver);
-        tabMethods = new TabMethods(driver);
+        elementsMethods = new ElementsMethods(getDriver());
+        tabMethods = new TabMethods(getDriver());
 
 //        WebElement alertMeniu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
 //        js.executeScript("arguments[0].click();", alertMeniu);
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.clickAlertFrameWindow();
 
 //        WebElement tabButton = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
 //        js.executeScript("arguments[0].click();", tabButton);
 
-        WebElement tabButton1 = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
+        WebElement tabButton1 = (getDriver()).findElement(By.xpath("//span[text()='Browser Windows']"));
         elementsMethods.clickJsElement(tabButton1);
 
-        WebElement tabButtonElement = driver.findElement(By.id("tabButton"));
+        WebElement tabButtonElement = (getDriver()).findElement(By.id("tabButton"));
         js.executeScript("arguments[0].click();", tabButtonElement);
 
-        System.out.println("URL-ul paginii curente este: " + driver.getCurrentUrl());
+        System.out.println("URL-ul paginii curente este: " + (getDriver()).getCurrentUrl());
 
 //        List <String> tabsList = new ArrayList<>(driver.getWindowHandles()); //returneaza toate taburile pana cand testul ajunge la linia asta
 //
@@ -58,11 +58,11 @@ public class TabWindowTest extends SharedData {
 
         tabMethods.switchSpecificTab(0);
 
-        WebElement newWindow = driver.findElement(By.id("windowButton"));
+        WebElement newWindow = (getDriver()).findElement(By.id("windowButton"));
         elementsMethods.clickJsElement(newWindow);
 
         tabMethods.switchSpecificTab(1);
 
-        driver.quit();
+        (getDriver()).quit();
     }
 }

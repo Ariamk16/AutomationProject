@@ -11,7 +11,7 @@ public class ElementsPage extends BasePage {
     }
 
     @FindBy(xpath = "//span[text()='Web Tables']")
-    public WebElement elementsPage;
+    private WebElement elementsPage;
 
     public void clickWebTable (){
 

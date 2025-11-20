@@ -2,18 +2,11 @@ package tests;
 
 import helpMethods.AlertsMethods;
 import helpMethods.ElementsMethods;
-import helpMethods.TabMethods;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AlertsWindows;
 import pages.HomePage;
 import sharedData.SharedData;
-
-import java.time.Duration;
 
 public class AlertTest extends SharedData {
 
@@ -23,13 +16,13 @@ public class AlertTest extends SharedData {
     @Test
     public void metodaTest() {
 
-        elementsMethods = new ElementsMethods(driver);
-        alertsMethods = new AlertsMethods(driver);
+        elementsMethods = new ElementsMethods(getDriver());
+        alertsMethods = new AlertsMethods(getDriver());
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.clickAlertFrameWindow();
 
-        AlertsWindows alertsWindows = new AlertsWindows(driver);
+        AlertsWindows alertsWindows = new AlertsWindows(getDriver());
         alertsWindows.clickAlert();
 
         alertsWindows.dealAlertProcess();

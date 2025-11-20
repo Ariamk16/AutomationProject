@@ -21,19 +21,19 @@ public class AlertsWindows {
         PageFactory.initElements(this.driver, this);}
 
         @FindBy(xpath = "//span[text()='Alerts']")
-        public WebElement alert;
+        private WebElement alert;
 
     @FindBy(id = "alertButton")
-    public WebElement firstAlertButtonElement;
+    private WebElement firstAlertButtonElement;
 
     @FindBy(id = "timerAlertButton")
-    public WebElement secondAlert;
+    private WebElement secondAlert;
 
     @FindBy(id = "confirmButton")
-    public WebElement thirdAlertElement;
+    private WebElement thirdAlertElement;
 
     @FindBy(id = "promtButton")
-    public WebElement fourthAlertElement;
+    private WebElement fourthAlertElement;
 
         public void clickAlert (){
             elementsMethods.clickJsElement(alert);

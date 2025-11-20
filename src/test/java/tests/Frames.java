@@ -2,11 +2,6 @@ package tests;
 
 import helpMethods.ElementsMethods;
 import helpMethods.FramesMethods;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.Frames1;
 import pages.HomePage;
@@ -19,16 +14,16 @@ public class Frames extends SharedData {
     @Test
     public void metodaTest() {
 
-        elementsMethods = new ElementsMethods(driver);
-        framesMethods = new FramesMethods(driver);
+        elementsMethods = new ElementsMethods(getDriver());
+        framesMethods = new FramesMethods(getDriver());
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.clickAlertFrameWindow();
 
 //        WebElement framesButton = driver.findElement(By.xpath("//span[text()='Frames']"));
 //        elementsMethods.clickJsElement(framesButton);
 
-        Frames1 frames = new Frames1(driver);
+        Frames1 frames = new Frames1(getDriver());
         frames.clickFramesButton();
 
         frames.switchFrames("frame1", "frame2");

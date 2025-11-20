@@ -2,14 +2,9 @@ package tests;
 
 import helpMethods.ElementsMethods;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
-
-import javax.swing.text.Element;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,35 +15,35 @@ public class PracticeForms extends SharedData {
     @Test
     public void metodaTest() {
 
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor)(getDriver());;
 
-        elementsMethods = new ElementsMethods(driver);
+        elementsMethods = new ElementsMethods(getDriver());
 
-        WebElement formsButtonMenu = driver.findElement(By.xpath("//h5[text()='Forms']"));
+        WebElement formsButtonMenu = (getDriver()).findElement(By.xpath("//h5[text()='Forms']"));
         elementsMethods.clickJsElement(formsButtonMenu);
 
-        WebElement practiceFormbutton = driver.findElement(By.xpath("//span[text()='Practice Form']"));
+        WebElement practiceFormbutton = (getDriver()).findElement(By.xpath("//span[text()='Practice Form']"));
         elementsMethods.clickJsElement(practiceFormbutton);
 
-        WebElement FirstNameElement = driver.findElement(By.id("firstName"));
+        WebElement FirstNameElement = (getDriver()).findElement(By.id("firstName"));
         elementsMethods.fillElement(FirstNameElement, "Maria");
 
-        WebElement LastNameElement = driver.findElement(By.id("lastName"));
+        WebElement LastNameElement = (getDriver()).findElement(By.id("lastName"));
         elementsMethods.fillElement(LastNameElement, "Aldea");
 
-        WebElement EmailElement = driver.findElement(By.id("userEmail"));
+        WebElement EmailElement = (getDriver()).findElement(By.id("userEmail"));
         elementsMethods.fillElement(EmailElement, "maria.aldea08@gmail.com");
 
-        WebElement mobileElement = driver.findElement(By.id("userNumber"));
+        WebElement mobileElement = (getDriver()).findElement(By.id("userNumber"));
         elementsMethods.fillElement(mobileElement, "0760786595");
 
-        WebElement currentAddress = driver.findElement(By.id("currentAddress"));
+        WebElement currentAddress = (getDriver()).findElement(By.id("currentAddress"));
         elementsMethods.fillElement(currentAddress, "Drumul Valea Cricovului");
 
         //type radio sunt notate checkboxurile
         //xpath pt lista de checkboxuri //input[@name='gender']
 
-        List<WebElement> genderOptionsList = driver.findElements(By.xpath("//input[@name='gender']"));
+        List<WebElement> genderOptionsList = (getDriver()).findElements(By.xpath("//input[@name='gender']"));
         String genderValue = "Female";
 
         switch (genderValue) {
@@ -64,7 +59,7 @@ public class PracticeForms extends SharedData {
 
         }
 
-        WebElement subjectElement = driver.findElement(By.id("subjectsInput"));
+        WebElement subjectElement = (getDriver()).findElement(By.id("subjectsInput"));
 //        String subjectValue = "Accounting";
 //        subjectElement.sendKeys(subjectValue);
 //        subjectElement.sendKeys(Keys.ENTER);
@@ -79,36 +74,36 @@ public class PracticeForms extends SharedData {
 
 
             List<String> hobbiesElements = Arrays.asList("Sports","Reading","Music");
-            List<WebElement> hobbiesCheckList = driver.findElements(By.xpath("//input[@type='checkbox']"));
+            List<WebElement> hobbiesCheckList = (getDriver()).findElements(By.xpath("//input[@type='checkbox']"));
             for (int index=0;index<hobbiesElements.size();index++){
                 js.executeScript("arguments[0].click();", hobbiesCheckList.get(index));
             }
 
-            WebElement photoElementField = driver.findElement(By.id("uploadPicture"));
+            WebElement photoElementField = (getDriver()).findElement(By.id("uploadPicture"));
             photoElementField.sendKeys("C:\\Users\\maria\\IdeaProjects\\AutomationTesting\\src\\test\\resources\\new upload.txt");
 
 
-        WebElement stateField = driver.findElement(By.xpath("//div[text()='Select State']"));
+        WebElement stateField = (getDriver()).findElement(By.xpath("//div[text()='Select State']"));
         elementsMethods.clickJsElement(stateField);
 
-        WebElement stateElementInput = driver.findElement(By.id("react-select-3-input"));
+        WebElement stateElementInput = (getDriver()).findElement(By.id("react-select-3-input"));
         String stateValue = "NCR";
         stateElementInput.sendKeys(stateValue);
         stateElementInput.sendKeys(Keys.ENTER);
 
         //date of birth interaction
 
-        WebElement dateOfBirthInput = driver.findElement(By.id("dateOfBirthInput"));
+        WebElement dateOfBirthInput = (getDriver()).findElement(By.id("dateOfBirthInput"));
         elementsMethods.clickJsElement(dateOfBirthInput);
 
-        WebElement monthElement = driver.findElement(By.className("react-datepicker__month-select"));
+        WebElement monthElement = (getDriver()).findElement(By.className("react-datepicker__month-select"));
         elementsMethods.selectDropDownElement(monthElement, "August");
 
-        WebElement yearDropdown = driver.findElement(By.className("react-datepicker__year-select"));
+        WebElement yearDropdown = (getDriver()).findElement(By.className("react-datepicker__year-select"));
         elementsMethods.selectDropDownElement(yearDropdown, "1994");
 
         String dayValue = "16";
-        List<WebElement> daysList = driver.findElements(By.xpath("//div[contains(@class,'react-datepicker__day--0') and not(contains(@class,'outside-month'))]"));
+        List<WebElement> daysList = (getDriver()).findElements(By.xpath("//div[contains(@class,'react-datepicker__day--0') and not(contains(@class,'outside-month'))]"));
         for (int index = 0; index < daysList.size(); index++){
             if (daysList.get(index).getText().equals(dayValue)){
                 daysList.get(index).click();
@@ -116,21 +111,21 @@ public class PracticeForms extends SharedData {
             }
         }
 
-        WebElement cityField = driver.findElement(By.xpath("//div[text()='Select City']"));
+        WebElement cityField = (getDriver()).findElement(By.xpath("//div[text()='Select City']"));
         elementsMethods.clickJsElement(cityField);
 
-        WebElement cityElementInput = driver.findElement(By.id("react-select-4-input"));
+        WebElement cityElementInput = (getDriver()).findElement(By.id("react-select-4-input"));
         String cityValue = "Delhi";
         cityElementInput.sendKeys(cityValue);
         cityElementInput.sendKeys(Keys.ENTER);
 
-        WebElement submitElement = driver.findElement(By.id("submit"));
+        WebElement submitElement = (getDriver()).findElement(By.id("submit"));
         elementsMethods.clickJsElement(submitElement);
 
-        WebElement messageElement = driver.findElement(By.id("example-modal-sizes-title-lg"));
+        WebElement messageElement = (getDriver()).findElement(By.id("example-modal-sizes-title-lg"));
         Assert.assertEquals(messageElement.getText(), "Thanks for submitting the form");
 
-        List <WebElement> labelList = driver.findElements(By.xpath("//table[@class ='table table-dark table-striped table-bordered table-hover']//td[1]"));
+        List <WebElement> labelList = (getDriver()).findElements(By.xpath("//table[@class ='table table-dark table-striped table-bordered table-hover']//td[1]"));
 
         Assert.assertEquals(labelList.get(0).getText(), "Student Name");
         Assert.assertEquals(labelList.get(1).getText(), "Student Email");
@@ -143,7 +138,7 @@ public class PracticeForms extends SharedData {
         Assert.assertEquals(labelList.get(8).getText(), "Address");
         Assert.assertEquals(labelList.get(9).getText(), "State and City");
 
-        List <WebElement> valueList = driver.findElements(By.xpath("//table[@class ='table table-dark table-striped table-bordered table-hover']//td[2]"));
+        List <WebElement> valueList = (getDriver()).findElements(By.xpath("//table[@class ='table table-dark table-striped table-bordered table-hover']//td[2]"));
 
 //        Assert.assertEquals(valueList.get(0).getText(), firstName + " " + lastName);
 //        Assert.assertEquals(valueList.get(1).getText(), email);

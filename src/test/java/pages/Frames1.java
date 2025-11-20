@@ -21,7 +21,7 @@ public class Frames1 {
     }
 
     @FindBy(xpath = "//span[text()='Frames']")
-    public WebElement framesButton;
+    private WebElement framesButton;
 
     public void clickFramesButton (){
         elementsMethods.clickJsElement(framesButton);
